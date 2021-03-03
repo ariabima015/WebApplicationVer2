@@ -69,9 +69,7 @@ namespace WebApplicationVer2.Migrations
 
                     b.HasKey("WarehouseId");
 
-                    b.HasIndex("GroupId")
-                        .IsUnique()
-                        .HasFilter("[GroupId] IS NOT NULL");
+                    b.HasIndex("GroupId");
 
                     b.ToTable("Warehouses");
                 });
@@ -90,8 +88,9 @@ namespace WebApplicationVer2.Migrations
             modelBuilder.Entity("WebApplicationVer2.Models.Warehouse", b =>
                 {
                     b.HasOne("WebApplicationVer2.Models.Group", "Group")
-                        .WithOne("Warehouses")
-                        .HasForeignKey("WebApplicationVer2.Models.Warehouse", "GroupId");
+                        .WithMany("Warehouses")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Group");
                 });

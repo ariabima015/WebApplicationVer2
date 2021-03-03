@@ -47,7 +47,7 @@ namespace WebApplicationVer2.Controllers
         // GET: Warehouses/Create
         public IActionResult Create()
         {
-            ViewData["GroupId"] = new SelectList(_context.Groups, "GroupId", "GroupId");
+            ViewData["GroupName"] = new SelectList(_context.Groups, "GroupId", "Name");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace WebApplicationVer2.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GroupId"] = new SelectList(_context.Groups, "GroupId", "GroupId", warehouse.GroupId);
+            ViewData["GroupName"] = new SelectList(_context.Groups, "GroupId", "Name", warehouse.GroupId);
             return View(warehouse);
         }
 
@@ -81,7 +81,7 @@ namespace WebApplicationVer2.Controllers
             {
                 return NotFound();
             }
-            ViewData["GroupId"] = new SelectList(_context.Groups, "GroupId", "GroupId", warehouse.GroupId);
+            ViewData["GroupName"] = new SelectList(_context.Groups, "GroupId", "Name", warehouse.GroupId);
             return View(warehouse);
         }
 
@@ -117,7 +117,7 @@ namespace WebApplicationVer2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GroupId"] = new SelectList(_context.Groups, "GroupId", "GroupId", warehouse.GroupId);
+            ViewData["GroupName"] = new SelectList(_context.Groups, "GroupId", "Name", warehouse.GroupId);
             return View(warehouse);
         }
 
