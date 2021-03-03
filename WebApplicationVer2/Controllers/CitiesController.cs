@@ -64,7 +64,7 @@ namespace WebApplicationVer2.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GroupId"] = new SelectList(_context.Groups, "GroupId", "GroupId", city.GroupId);
+            ViewData["GroupName"] = new SelectList(_context.Groups, "GroupId", "Name", city.GroupId);
             return View(city);
         }
 
@@ -117,7 +117,7 @@ namespace WebApplicationVer2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GroupId"] = new SelectList(_context.Groups, "GroupId", "GroupId", city.GroupId);
+            ViewData["GroupName"] = new SelectList(_context.Groups, "GroupId", "Name", city.GroupId);
             return View(city);
         }
 
