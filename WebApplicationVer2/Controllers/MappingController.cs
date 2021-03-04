@@ -20,16 +20,24 @@ namespace WebApplicationVer2.Controllers
         {
             ViewData["CityName"] = new SelectList(_context.Cities, "GroupId", "Name");
             ViewData["WarehouseName"] = new SelectList(_context.Warehouses, "WarehouseId", "Name");
-            MappingIndexViewModel mappingIndexViewModel = new MappingIndexViewModel();
+
             MappingViewModel mappingViewModel = new MappingViewModel();
+
             var cities = _context.Cities;
             var warehouses = _context.Warehouses;
-            mappingViewModel.MappingList = new List<MappingIndexViewModel>();
             mappingViewModel.MappingList = await cities
                 .Join(warehouses,
                 city => city.Group,
                 warehouse => warehouse.Group,
-                (city, warehouse) => new MappingIndexViewModel {City = city, Group = city.Group, Warehouse = warehouse}).ToListAsync();
+                (city, warehouse) =>
+                new MappingIndexViewModel
+                {
+                    City = city,
+                    Group = city.Group,
+                    Warehouse = warehouse
+                })
+                .ToListAsync();
+
             return View(mappingViewModel);
         }
 
