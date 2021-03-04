@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebApplicationVer2.Models
 {
@@ -15,6 +12,6 @@ namespace WebApplicationVer2.Models
         [DisplayName("City")]
         [Required]
         public int GroupId { get; set; }
-        public  List<MappingIndexViewModel> MappingList { get; set; }
+        public List<MappingIndexViewModel> MappingList { get; set; }
     }
 }
